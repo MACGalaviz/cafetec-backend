@@ -25,7 +25,7 @@ insert role(id,name) values (False,"User");
 
 /*Users*/
 INSERT user (control_number, password, role_id, status, date) VALUES ("admin", 'admin', TRUE, TRUE, CURDATE());
-INSERT user (control_number, password, role_id, status, date) VALUES ("14212008", '14212008', FALSE, TRUE, CURDATE());
+INSERT user (control_number, password, role_id, status, date) VALUES ("14212008", '14212008', FALSE, TRUE, curdate());
 
 SELECT * FROM role;
 SELECT * FROM user;
