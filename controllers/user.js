@@ -1,3 +1,4 @@
+"strict"
 const mysql = require("mysql");
 const sql = require("../mysql/user");
 const model = require("../models/user");
@@ -27,10 +28,20 @@ function getAll(req, res) {
 
 // Function to get user by id
 function getById(req, res) {
-    // id param
+    // New model
+    let user = new model();
+    // Params
+    console.log(req.body)
+    const body =req.body;
+    // See params TODO Temporal
+    console.log("body: "+body);
+    user.control_number = body.control_number;
+    user.password = body.password;
+    console.log("user: "+user);
+    /*// id param
     const id = req.params.id;
-    /*// See id TODO Temporal
-    console.log(id);*/
+    /!*!// See id TODO Temporal
+    console.log(id);*!/*/
     // Create connection
     const conecction = mysql.createConnection({
         host: "localhost",
@@ -41,12 +52,15 @@ function getById(req, res) {
     conecction.connect(function(err) {
         // Connection Failed
         if (err) res.status(200).send({"conecction": "Fallo en la conexión con la base de datos."});
-        // Get user by id
-        conecction.query(sql.getById,[id], function (err, result) {
+        conecction.query(sql.getById,[user.control_number,user.password], function (err, result) {
+       /* // Get user by id
+        conecction.query(sql.getById,[id], function (err, result) {*/
             // String to JSON
+            console.log(result);
             const json = JSON.stringify(result);
             // Send JSON
             res.send(json);
+            console.log(json);
         });
         // End connection
         conecction.end();

@@ -12,6 +12,7 @@ create table user (
 id int not null auto_increment,
 control_number varchar(200) not null unique,
 password  varchar (200) not null,
+cash double not null,
 role_id boolean not null,
 date date,
 status bool not null,
@@ -24,8 +25,8 @@ insert role(id,name) values (True,"Admin");
 insert role(id,name) values (False,"User");
 
 /*Users*/
-INSERT user (control_number, password, role_id, status, date) VALUES ("admin", 'admin', TRUE, TRUE, CURDATE());
-INSERT user (control_number, password, role_id, status, date) VALUES ("14212008", '14212008', FALSE, TRUE, curdate());
+INSERT user (control_number, password, cash, role_id, status, date) VALUES ("admin", 'admin',0.0, TRUE, TRUE, CURDATE());
+INSERT user (control_number, password, cash, role_id, status, date) VALUES ("14212008", '14212008',14.50, FALSE, TRUE, curdate());
 
 SELECT * FROM role;
 SELECT * FROM user;
