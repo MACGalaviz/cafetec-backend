@@ -102,15 +102,17 @@ function post(req, res) {
 
 // Function to update user
 function patch(req, res) {
+    //console.log(req.body.params.id);
     // id param
-    const id = req.params.id;
+
     // New model
     let user = new model();
     // Params
     const body = req.body;
     /*// See params TODO Temporal
     console.log(body);*/
-    user.id = id;
+    user.id = req.params.id;
+    console.log(req);
     user.control_number = body.control_number;
     user.password = body.password;
     user.status = body.status;

@@ -1,7 +1,7 @@
 let mongoose = require("mongoose");
 let Schema = mongoose.Schema;
 
-//Modelo JSON para empresas
+//Modelo JSON
 let user = Schema({
     id              : Number,
     control_number  : String,
